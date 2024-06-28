@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.TextFlow?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="textprocessingtool.controller.MainController" spacing="10" styleClass="root">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+    <HBox spacing="20">
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label text="Data Manager" styleClass="section-title"/>
+            <TextArea fx:id="dataInputField" promptText="Enter data" wrapText="true" prefRowCount="5"/>
+            <HBox spacing="10">
+                <Button text="Add to Set" onAction="#addToSet" styleClass="action-button"/>
+            </HBox>
+            <ListView fx:id="dataListView" VBox.vgrow="ALWAYS"/>
+            <HBox spacing="10">
+                <Button text="Edit" onAction="#editData" styleClass="action-button"/>
+                <Button text="Delete" onAction="#deleteData" styleClass="action-button"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label text="Regex Operations" styleClass="section-title"/>
+            <HBox spacing="10">
+                <TextField fx:id="regexPatternField" promptText="Enter regex pattern" HBox.hgrow="ALWAYS"/>
+                <Button text="Save" onAction="#savePattern" styleClass="action-button"/>
+            </HBox>
+            <HBox spacing="10">
+                <ComboBox fx:id="savedPatternsComboBox" promptText="Saved Patterns" HBox.hgrow="ALWAYS"/>
+                <Button text="Load" onAction="#loadPattern" styleClass="action-button"/>
+            </HBox>
+            <TextField fx:id="replacementField" promptText="Enter replacement (for Replace All)"/>
+            <HBox spacing="10">
+                <Button text="Contains Pattern" onAction="#checkContainsPattern" styleClass="action-button"/>
+                <Button text="Find All Matches" onAction="#findAllMatches" styleClass="action-button"/>
+                <Button text="Replace All" onAction="#replaceAll" styleClass="action-button"/>
+            </HBox>
+            <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" fitToHeight="true">
+                <TextFlow fx:id="resultArea" styleClass="result-area"/>
+            </ScrollPane>
+        </VBox>
+    </HBox>
+</VBox>
